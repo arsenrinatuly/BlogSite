@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Удалить пост{% endblock %}
+
+{% block content %}
+<div class="alert alert-danger">
+    <h4>⚠️ Ты уверен, что хочешь удалить "{{ post.title }}"?</h4>
+</div>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Да, удалить</button>
+    <a href="{% url 'post_detail' post.pk %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

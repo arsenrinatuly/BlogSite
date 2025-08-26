@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль {{ profile_user.username }}{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="mb-4">👤 Профиль {{ profile_user.username }}</h1>
+
+    {% if profile_user.profile.avatar %}
+        <img src="{{ profile_user.profile.avatar.url }}" alt="Аватар" width="150" class="rounded-circle mb-3">
+    {% else %}
+        <img src="/static/default_avatar.png" alt="Аватар" width="150" class="rounded-circle mb-3">
+    {% endif %}
+    <p><strong>Подписчиков:</strong> {{ profile_user.followers.count }}</p>
+    <p><strong>Подписок:</strong> {{ profile_user.following.count }}</p>
+
+{% if user.is_authenticated and user != profile_user %}
+  {% if is_following %}
+    <a href="{% url 'unfollow_user' profile_user.username %}" class="btn btn-danger">Отписаться</a>
+  {% else %}
+    <a href="{% url 'follow_user' profile_user.username %}" class="btn btn-primary">Подписаться</a>
+  {% endif %}
+{% endif %}
+
+
+    <p><strong>Email:</strong> {{ profile_user.email }}</p>
+    <p><strong>О себе:</strong> {{ profile_user.profile.bio|default:"Пока ничего не рассказал" }}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>📜 Лента</h2>
+
+  {% if posts %}
+    {% for post in posts %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>{{ post.title }}</h5>
+          <p>{{ post.content|truncatewords:20 }}</p>
+          <a href="{% url 'post_detail' post.pk %}" class="btn btn-sm btn-primary">Читать</a>
+          <a href="{% url 'user_profile' post.author.username %}" class="btn btn-sm btn-outline-secondary">Автор: {{ post.author.username }}</a>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="alert alert-info">Пока нет постов в ленте. Подпишись на авторов!</div>
+  {% endif %}
+{% endblock %}
