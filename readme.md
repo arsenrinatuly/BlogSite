@@ -45,15 +45,11 @@
 ## ⚡ Установка и запуск
 
 1. Клонировать репозиторий:
-   ```bash
-   git clone https://github.com/username/BlogSite.git
-   cd BlogSite
 
-    Создать виртуальное окружение и активировать его:
-
-python -m venv venv
-source venv/bin/activate   # для Linux/Mac
-venv\Scripts\activate      # для Windows
+Создать виртуальное окружение и активировать его:
+   python -m venv venv
+   source venv/bin/activate   # для Linux/Mac
+   venv\Scripts\activate      # для Windows
 
 Установить зависимости:
 
